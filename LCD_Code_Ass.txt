@@ -1,0 +1,98 @@
+ORG 00H
+	LCD_Ports EQU P1
+	RS BIT P2.1
+	E BIT P2.2
+		
+	MOV LCD_Ports,#00H	
+	CLR RS
+	CLR E
+	
+	ACALL LCD_INIT
+	 ;My_Code
+	
+	
+	
+	LCD_INIT:
+	MOV A,#38H
+	ACALL LCD_COMM
+	ACALL DELAY
+	MOV A,#01H
+	ACALL LCD_COMM
+	ACALL DELAY
+	MOV A,#0EH
+	ACALL LCD_COMM
+	ACALL DELAY
+	RET
+	
+	
+	LCD_CLEAR:
+	MOV A,#01H
+	ACALL LCD_COMM
+	ACALL DELAY
+	RET
+	
+	
+	
+	LCD_COMM:
+	MOV LCD_Ports,A
+	CLR RS
+	SETB E
+	NOP
+	NOP
+	NOP
+	NOP
+	CLR E
+	RET
+	
+	
+	LCD_DATA:
+	MOV LCD_Ports,A
+	SETB RS
+	SETB E
+	NOP
+	NOP
+	NOP
+	NOP
+	CLR E
+	RET
+	
+	
+	
+DELAY_SHOW: MOV R2,#255
+again: MOV R3,#255
+here:  NOP
+	   NOP
+	   NOP
+	   NOP
+	   NOP
+	   NOP
+	   NOP
+	   NOP
+	   NOP
+	   NOP
+	   NOP
+	   DJNZ R3,here
+       DJNZ R2,again
+RET
+	
+	DELAY:
+	MOV R6,#7
+	L2: MOV R7,#255
+	L1: 
+		NOP
+		NOP
+		NOP
+		NOP
+		NOP
+		NOP
+		NOP
+		NOP
+		NOP
+		DJNZ R7,L1
+		DJNZ R6,L2
+		RET
+	
+	ORG 300H
+		MSG: DB "Team Members:",0,"- Dahy",0,"- Eissa",0,"- Zaki",0,"- Rashad",0,"- Zizo",0,"- Kordy",0
+	
+END
