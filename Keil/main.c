@@ -2,6 +2,8 @@
 #include "define_ports.h"
 #include "delay.h"
 #include "lcd.h"
+#include "results.h"
+
 
 
 unsigned int pulse_count = 0;
@@ -44,9 +46,11 @@ void setup_timers()
     TR1 = 1; 
   }
 
-void display_frequency()
+void display_frequency(unsigned int freq)
 	{ 
     lcd_print("Freq: ");
+		print_result(freq);
+		
   }
 
 void main() 
@@ -56,7 +60,7 @@ void main()
 
     while (1) 
 			{
-        display_frequency();
+        display_frequency(frequency);
         delay(100);  // Small delay before updating LCD
       }
   }

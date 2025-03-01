@@ -1,0 +1,92 @@
+C51 COMPILER V9.60.7.0   MAIN                                                              03/01/2025 23:29:30 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN .\Objects\main.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE main.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND PRINT(.\Listings\main
+                    -.lst) TABS(2) OBJECT(.\Objects\main.obj)
+
+line level    source
+
+   1          #include <reg51.h>
+   2          #include "define_ports.h"
+   3          #include "delay.h"
+   4          #include "lcd.h"
+   5          #include "results.h"
+   6          
+   7          
+   8          
+   9          unsigned int pulse_count = 0;
+  10          unsigned int frequency = 0;
+  11          
+  12          void timer0_isr() interrupt 1 
+  13            {
+  14   1          TR0 = 0; 
+  15   1          TR1 = 0;  
+  16   1      
+  17   1          pulse_count = TH1;  
+  18   1          pulse_count = (pulse_count << 8) | TL1;
+  19   1          
+  20   1          frequency = pulse_count * 20; 
+  21   1      
+  22   1          TH0 = 0x3C;
+  23   1          TL0 = 0xB0;
+  24   1          
+  25   1          TH1 = 0;  
+  26   1          TL1 = 0;
+  27   1      
+  28   1          TR0 = 1;  
+  29   1          TR1 = 1;  
+  30   1        }
+  31          
+  32          void setup_timers() 
+  33            {
+  34   1          TMOD = 0x51;  
+  35   1          
+  36   1          TH0 = 0x4B;  
+  37   1          TL0 = 0xFD;
+  38   1      
+  39   1          TH1 = 0;  
+  40   1          TL1 = 0;
+  41   1          
+  42   1          ET0 = 1;  
+  43   1          EA = 1;   
+  44   1      
+  45   1          TR0 = 1;  
+  46   1          TR1 = 1; 
+  47   1        }
+  48          
+  49          void display_frequency(unsigned int freq)
+  50            { 
+  51   1          lcd_print("Freq: ");
+  52   1          print_result(freq);
+  53   1          
+  54   1        }
+C51 COMPILER V9.60.7.0   MAIN                                                              03/01/2025 23:29:30 PAGE 2   
+
+  55          
+  56          void main() 
+  57            {
+  58   1          init();  // Initialize LCD
+  59   1          setup_timers();
+  60   1      
+  61   1          while (1) 
+  62   1            {
+  63   2              display_frequency(frequency);
+  64   2              delay(100);  // Small delay before updating LCD
+  65   2            }
+  66   1        }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    535    ----
+   CONSTANT SIZE    =      7    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     10      26
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
