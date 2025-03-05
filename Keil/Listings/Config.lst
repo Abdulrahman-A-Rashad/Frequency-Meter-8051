@@ -1,0 +1,19 @@
+C51 COMPILER V9.60.7.0   CONFIG                                                            03/05/2025 12:41:45 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE CONFIG
+OBJECT MODULE PLACED IN .\Objects\Config.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE Config\Config.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\BLL;.\HAL;..\applicati
+                    -on layers;.\Config) DEBUG OBJECTEXTEND PRINT(.\Listings\Config.lst) TABS(2) OBJECT(.\Objects\Config.obj)
+
+line level    source
+
+   1          #include "Config.h"
+*** ERROR C202 IN LINE 4 OF Config\Config.h: 'P2': undefined identifier
+*** ERROR C202 IN LINE 5 OF Config\Config.h: 'P2': undefined identifier
+*** ERROR C202 IN LINE 6 OF Config\Config.h: 'P2': undefined identifier
+*** ERROR C202 IN LINE 7 OF Config\Config.h: 'P3': undefined identifier
+   2          
+   3          
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  4 ERROR(S)

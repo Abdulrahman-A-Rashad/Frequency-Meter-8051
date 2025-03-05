@@ -1,0 +1,12 @@
+".\Objects\STARTUP.obj",
+".\Objects\Main.obj",
+".\Objects\KeypadManager.obj",
+".\Objects\LCDManager.obj",
+".\Objects\InterruptManager.obj",
+".\Objects\Keypad.obj",
+".\Objects\LCD.obj",
+".\Objects\Delay.obj",
+".\Objects\Interrupt.obj",
+".\Objects\Timer.obj" 
+TO ".\Objects\app" 
+PRINT(".\Listings\app.m51") RAMSIZE(256) 

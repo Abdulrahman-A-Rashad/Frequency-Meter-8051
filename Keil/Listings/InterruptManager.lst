@@ -1,0 +1,60 @@
+C51 COMPILER V9.60.7.0   INTERRUPTMANAGER                                                  03/05/2025 17:08:17 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE INTERRUPTMANAGER
+OBJECT MODULE PLACED IN .\Objects\InterruptManager.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE BLL\InterruptManager.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\BLL;.\HAL;..\ap
+                    -plication layers;.\Config) DEBUG OBJECTEXTEND PRINT(.\Listings\InterruptManager.lst) TABS(2) OBJECT(.\Objects\InterruptM
+                    -anager.obj)
+
+line level    source
+
+   1          #include "InterruptManager.h"
+   2          
+   3          void setup_timers() 
+   4            {
+   5   1          Timer0_Init(0x50,0x3C,0xB0); // Timer 0 : 16 bit timer : 50 ms
+   6   1          Timer1_Init(0x01,0x0,0x0); // Timer 1 : 16 bit counter : clear counter
+   7   1          
+   8   1      
+   9   1          EnableGlobalInterrupt();
+  10   1          EnableTimerInterrupt();
+  11   1          
+  12   1          Timer0_Start();
+  13   1          Timer1_Start();
+  14   1       }
+  15            
+  16           void timer0_isr() interrupt 1 
+  17            {
+  18   1          Timer0_Stop();
+  19   1          Timer1_Stop();
+  20   1          
+  21   1          // Read Timer 1 count
+  22   1          PULSE_COUNT = (TH1 << 8) | TL1;
+  23   1          
+  24   1          // Frequency is directly the counted pulses * 20 
+  25   1          FREQUENCY = PULSE_COUNT*20;
+  26   1      
+  27   1          // Reset Timer 0 for 50ms delay
+  28   1          Timer0_Init(0x50,0x3C,0xB0);
+  29   1      
+  30   1          // Reset Timer 1 for new measurement
+  31   1          Timer1_Init(0x01,0x0,0x0);
+  32   1      
+  33   1          Timer0_Start();
+  34   1          Timer1_Start();
+  35   1        }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    138    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

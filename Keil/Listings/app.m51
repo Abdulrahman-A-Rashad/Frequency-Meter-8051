@@ -1,0 +1,523 @@
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                    03/05/2025  17:08:17  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.4.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\Main.obj, .\Objects\KeypadManager.obj, .\Objects\LCDManager
+>> .obj, .\Objects\InterruptManager.obj, .\Objects\Keypad.obj, .\Objects\LCD.obj, .\Objects\Delay.obj, .\Objects\Interru
+>> pt.obj, .\Objects\Timer.obj TO .\Objects\app PRINT (.\Listings\app.m51) RAMSIZE (256)
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\STARTUP.obj (?C_STARTUP)
+  .\Objects\Main.obj (MAIN)
+  .\Objects\KeypadManager.obj (KEYPADMANAGER)
+  .\Objects\LCDManager.obj (LCDMANAGER)
+  .\Objects\InterruptManager.obj (INTERRUPTMANAGER)
+  .\Objects\Keypad.obj (KEYPAD)
+  .\Objects\LCD.obj (LCD)
+  .\Objects\Delay.obj (DELAY)
+  .\Objects\Interrupt.obj (INTERRUPT)
+  .\Objects\Timer.obj (TIMER)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_INIT)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?CLDPTR)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?IMUL)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?LMUL)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?ULDIV)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C?ULCMP)
+
+
+LINK MAP OF MODULE:  .\Objects\app (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0015H     UNIT         _DATA_GROUP_
+            DATA    001DH     0006H     UNIT         ?DT?MAIN
+            IDATA   0023H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0003H     ABSOLUTE     
+                    000EH     07F2H                  *** GAP ***
+            CODE    0800H     0159H     UNIT         ?C?LIB_CODE
+            CODE    0959H     00B9H     UNIT         ?PR?_PRINT_RESULT?LCDMANAGER
+            CODE    0A12H     008CH     UNIT         ?C_C51STARTUP
+            CODE    0A9EH     006DH     UNIT         ?PR?TIMER0_ISR?INTERRUPTMANAGER
+            CODE    0B0BH     0050H     UNIT         ?PR?_RETURN_7AGA?LCDMANAGER
+            CODE    0B5BH     0039H     UNIT         ?PR?MAIN?MAIN
+            CODE    0B94H     0025H     UNIT         ?PR?_LCD_PRINT?LCDMANAGER
+            CODE    0BB9H     001EH     UNIT         ?PR?INIT?LCDMANAGER
+            CODE    0BD7H     001DH     UNIT         ?PR?SETUP_TIMERS?INTERRUPTMANAGER
+            CODE    0BF4H     0019H     UNIT         ?PR?_DELAYUSINGINSTRUCTION?DELAY
+            CODE    0C0DH     0010H     UNIT         ?PR?_COMMAND?LCD
+            CODE    0C1DH     0010H     UNIT         ?PR?_WRITE_DATA?LCD
+            CODE    0C2DH     000DH     UNIT         ?C_INITSEG
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  03/05/2025  17:08:17  PAGE 2
+
+
+            CODE    0C3AH     000CH     UNIT         ?CO?MAIN
+            CODE    0C46H     0008H     UNIT         ?PR?_TIMER0_INIT?TIMER
+            CODE    0C4EH     0008H     UNIT         ?PR?_TIMER1_INIT?TIMER
+            CODE    0C56H     0005H     UNIT         ?PR?CLEARLCD?LCDMANAGER
+            CODE    0C5BH     0003H     UNIT         ?PR?COMMAND?KEYPAD
+            CODE    0C5EH     0003H     UNIT         ?PR?ENABLEGLOBALINTERRUPT?INTERRUPT
+            CODE    0C61H     0003H     UNIT         ?PR?ENABLETIMERINTERRUPT?INTERRUPT
+            CODE    0C64H     0003H     UNIT         ?PR?TIMER0_START?TIMER
+            CODE    0C67H     0003H     UNIT         ?PR?TIMER1_START?TIMER
+            CODE    0C6AH     0003H     UNIT         ?PR?TIMER0_STOP?TIMER
+            CODE    0C6DH     0003H     UNIT         ?PR?TIMER1_STOP?TIMER
+
+
+
+OVERLAY MAP OF MODULE:   .\Objects\app (?C_STARTUP)
+
+
+SEGMENT                                       DATA_GROUP 
+  +--> CALLED SEGMENT                       START    LENGTH
+-----------------------------------------------------------
+?C_C51STARTUP                               -----    -----
+  +--> ?PR?MAIN?MAIN
+  +--> ?C_INITSEG
+
+?PR?MAIN?MAIN                               -----    -----
+  +--> ?PR?INIT?LCDMANAGER
+  +--> ?PR?SETUP_TIMERS?INTERRUPTMANAGER
+  +--> ?PR?CLEARLCD?LCDMANAGER
+  +--> ?CO?MAIN
+  +--> ?PR?_LCD_PRINT?LCDMANAGER
+  +--> ?PR?_PRINT_RESULT?LCDMANAGER
+
+?PR?INIT?LCDMANAGER                         -----    -----
+  +--> ?PR?_COMMAND?LCD
+  +--> ?PR?_DELAYUSINGINSTRUCTION?DELAY
+
+?PR?_COMMAND?LCD                            -----    -----
+  +--> ?PR?_DELAYUSINGINSTRUCTION?DELAY
+
+?PR?SETUP_TIMERS?INTERRUPTMANAGER           -----    -----
+  +--> ?PR?_TIMER0_INIT?TIMER
+  +--> ?PR?_TIMER1_INIT?TIMER
+  +--> ?PR?ENABLEGLOBALINTERRUPT?INTERRUPT
+  +--> ?PR?ENABLETIMERINTERRUPT?INTERRUPT
+  +--> ?PR?TIMER0_START?TIMER
+  +--> ?PR?TIMER1_START?TIMER
+
+?PR?CLEARLCD?LCDMANAGER                     -----    -----
+  +--> ?PR?_COMMAND?LCD
+
+?PR?_LCD_PRINT?LCDMANAGER                   0008H    0003H
+  +--> ?PR?_WRITE_DATA?LCD
+
+?PR?_WRITE_DATA?LCD                         -----    -----
+  +--> ?PR?_DELAYUSINGINSTRUCTION?DELAY
+
+?PR?_PRINT_RESULT?LCDMANAGER                0008H    000FH
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  03/05/2025  17:08:17  PAGE 3
+
+
+  +--> ?PR?_RETURN_7AGA?LCDMANAGER
+  +--> ?PR?_WRITE_DATA?LCD
+
+?PR?_RETURN_7AGA?LCDMANAGER                 0017H    0006H
+
+*** NEW ROOT ***************************************************
+
+?PR?TIMER0_ISR?INTERRUPTMANAGER             -----    -----
+  +--> ?PR?TIMER0_STOP?TIMER
+  +--> ?PR?TIMER1_STOP?TIMER
+  +--> ?PR?_TIMER0_INIT?TIMER
+  +--> ?PR?_TIMER1_INIT?TIMER
+  +--> ?PR?TIMER0_START?TIMER
+  +--> ?PR?TIMER1_START?TIMER
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\app (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:0A12H         SEGMENT       ?C_C51STARTUP
+  I:0023H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0A15H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:0A12H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:0A12H         LINE#         133
+  C:0A14H         LINE#         134
+  C:0A15H         LINE#         135
+  C:0A16H         LINE#         136
+  C:0A18H         LINE#         185
+  C:0A1BH         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        MAIN
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  03/05/2025  17:08:17  PAGE 4
+
+
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:0B5BH         PUBLIC        main
+  D:001DH         PUBLIC        FREQUENCY
+  D:001FH         PUBLIC        last_frequency
+  D:0021H         PUBLIC        PULSE_COUNT
+  -------         PROC          MAIN
+  C:0B5BH         LINE#         10
+  C:0B5BH         LINE#         12
+  C:0B5EH         LINE#         13
+  C:0B61H         LINE#         14
+  C:0B61H         LINE#         15
+  C:0B61H         LINE#         16
+  C:0B6DH         LINE#         17
+  C:0B6DH         LINE#         18
+  C:0B70H         LINE#         19
+  C:0B79H         LINE#         20
+  C:0B83H         LINE#         21
+  C:0B8CH         LINE#         22
+  C:0B8CH         LINE#         23
+  C:0B92H         LINE#         24
+  -------         ENDPROC       MAIN
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        KEYPADMANAGER
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  -------         ENDMOD        KEYPADMANAGER
+
+  -------         MODULE        LCDMANAGER
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:0959H         PUBLIC        _print_result
+  C:0BB9H         PUBLIC        init
+  C:0B94H         PUBLIC        _lcd_print
+  C:0C56H         PUBLIC        clearLCD
+  C:0B0BH         PUBLIC        _return_7aga
+  -------         PROC          INIT
+  C:0BB9H         LINE#         4
+  C:0BB9H         LINE#         5
+  C:0BB9H         LINE#         6
+  C:0BBEH         LINE#         7
+  C:0BC3H         LINE#         8
+  C:0BC8H         LINE#         9
+  C:0BCDH         LINE#         10
+  C:0BD2H         LINE#         11
+  -------         ENDPROC       INIT
+  -------         PROC          _LCD_PRINT
+  D:0008H         SYMBOL        str
+  C:0B94H         LINE#         15
+  C:0B9AH         LINE#         16
+  C:0BA5H         LINE#         17
+  C:0BB6H         LINE#         18
+  C:0BB8H         LINE#         19
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  03/05/2025  17:08:17  PAGE 5
+
+
+  -------         ENDPROC       _LCD_PRINT
+  -------         PROC          _RETURN_7AGA
+  D:0017H         SYMBOL        num_digits
+  -------         DO            
+  D:0019H         SYMBOL        result
+  D:0082H         SYMBOL        i
+  -------         ENDDO         
+  C:0B0BH         LINE#         22
+  C:0B0FH         LINE#         23
+  C:0B0FH         LINE#         24
+  C:0B19H         LINE#         26
+  C:0B36H         LINE#         27
+  C:0B36H         LINE#         28
+  C:0B4FH         LINE#         29
+  C:0B52H         LINE#         30
+  C:0B5AH         LINE#         31
+  -------         ENDPROC       _RETURN_7AGA
+  -------         PROC          _PRINT_RESULT
+  D:0008H         SYMBOL        res
+  -------         DO            
+  D:000CH         SYMBOL        num_digits
+  D:000EH         SYMBOL        temp
+  -------         DO            
+  D:0012H         SYMBOL        y
+  D:0016H         SYMBOL        z
+  -------         ENDDO         
+  -------         ENDDO         
+  C:0959H         LINE#         34
+  C:0961H         LINE#         35
+  C:0961H         LINE#         36
+  C:096AH         LINE#         37
+  C:096AH         LINE#         39
+  C:096FH         LINE#         40
+  C:0971H         LINE#         41
+  C:0984H         LINE#         42
+  C:0984H         LINE#         43
+  C:098CH         LINE#         44
+  C:09A5H         LINE#         45
+  C:09A7H         LINE#         46
+  C:09B4H         LINE#         47
+  C:09B4H         LINE#         48
+  C:09C3H         LINE#         49
+  C:09DBH         LINE#         50
+  C:09DFH         LINE#         51
+  C:0A02H         LINE#         52
+  C:0A0AH         LINE#         53
+  C:0A0CH         LINE#         54
+  C:0A0CH         LINE#         55
+  C:0A0CH         LINE#         56
+  C:0A11H         LINE#         57
+  C:0A11H         LINE#         58
+  -------         ENDPROC       _PRINT_RESULT
+  -------         PROC          CLEARLCD
+  C:0C56H         LINE#         60
+  C:0C56H         LINE#         61
+  -------         ENDPROC       CLEARLCD
+  -------         ENDMOD        LCDMANAGER
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  03/05/2025  17:08:17  PAGE 6
+
+
+
+  -------         MODULE        INTERRUPTMANAGER
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:0A9EH         PUBLIC        timer0_isr
+  C:0BD7H         PUBLIC        setup_timers
+  D:008DH         PUBLIC        TH1
+  D:008BH         PUBLIC        TL1
+  -------         PROC          SETUP_TIMERS
+  C:0BD7H         LINE#         3
+  C:0BD7H         LINE#         4
+  C:0BD7H         LINE#         5
+  C:0BE0H         LINE#         6
+  C:0BE8H         LINE#         9
+  C:0BEBH         LINE#         10
+  C:0BEEH         LINE#         12
+  C:0BF1H         LINE#         13
+  -------         ENDPROC       SETUP_TIMERS
+  -------         PROC          TIMER0_ISR
+  C:0A9EH         LINE#         16
+  C:0ABBH         LINE#         18
+  C:0ABEH         LINE#         19
+  C:0AC1H         LINE#         22
+  C:0ACBH         LINE#         25
+  C:0AD9H         LINE#         28
+  C:0AE2H         LINE#         31
+  C:0AEAH         LINE#         33
+  C:0AEDH         LINE#         34
+  C:0AF0H         LINE#         35
+  -------         ENDPROC       TIMER0_ISR
+  -------         ENDMOD        INTERRUPTMANAGER
+
+  -------         MODULE        KEYPAD
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:0C5BH         PUBLIC        command
+  -------         PROC          COMMAND
+  C:0C5BH         LINE#         4
+  C:0C5BH         LINE#         5
+  C:0C5DH         LINE#         6
+  -------         ENDPROC       COMMAND
+  -------         ENDMOD        KEYPAD
+
+  -------         MODULE        LCD
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  B:00A0H.1       PUBLIC        EN
+  B:00A0H.0       PUBLIC        RS
+  B:00A0H.2       PUBLIC        RW
+  C:0C1DH         PUBLIC        _write_data
+  C:0C0DH         PUBLIC        _command
+  -------         PROC          _COMMAND
+  D:0007H         SYMBOL        cmd
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  03/05/2025  17:08:17  PAGE 7
+
+
+  C:0C0DH         LINE#         5
+  C:0C0DH         LINE#         6
+  C:0C0DH         LINE#         7
+  C:0C0FH         LINE#         8
+  C:0C11H         LINE#         9
+  C:0C13H         LINE#         10
+  C:0C15H         LINE#         11
+  C:0C1AH         LINE#         12
+  C:0C1CH         LINE#         13
+  -------         ENDPROC       _COMMAND
+  -------         PROC          _WRITE_DATA
+  D:0007H         SYMBOL        ch
+  C:0C1DH         LINE#         15
+  C:0C1DH         LINE#         16
+  C:0C1DH         LINE#         17
+  C:0C1FH         LINE#         18
+  C:0C21H         LINE#         19
+  C:0C23H         LINE#         20
+  C:0C25H         LINE#         21
+  C:0C2AH         LINE#         22
+  C:0C2CH         LINE#         23
+  -------         ENDPROC       _WRITE_DATA
+  -------         ENDMOD        LCD
+
+  -------         MODULE        DELAY
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  C:0BF4H         PUBLIC        _delayUsingInstruction
+  -------         PROC          _DELAYUSINGINSTRUCTION
+  D:0007H         SYMBOL        c
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0006H         SYMBOL        j
+  -------         ENDDO         
+  C:0BF4H         LINE#         4
+  C:0BF4H         LINE#         5
+  C:0BF4H         LINE#         8
+  C:0BF7H         LINE#         9
+  C:0BF7H         LINE#         10
+  C:0C01H         LINE#         11
+  C:0C0CH         LINE#         12
+  -------         ENDPROC       _DELAYUSINGINSTRUCTION
+  -------         ENDMOD        DELAY
+
+  -------         MODULE        INTERRUPT
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  B:00A8H.7       PUBLIC        EA
+  C:0C61H         PUBLIC        EnableTimerInterrupt
+  B:00A8H.1       PUBLIC        ET0
+  C:0C5EH         PUBLIC        EnableGlobalInterrupt
+  -------         PROC          ENABLEGLOBALINTERRUPT
+  C:0C5EH         LINE#         4
+  C:0C5EH         LINE#         5
+  C:0C5EH         LINE#         6
+  C:0C60H         LINE#         7
+  -------         ENDPROC       ENABLEGLOBALINTERRUPT
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  03/05/2025  17:08:17  PAGE 8
+
+
+  -------         PROC          ENABLETIMERINTERRUPT
+  C:0C61H         LINE#         9
+  C:0C61H         LINE#         10
+  C:0C61H         LINE#         11
+  C:0C63H         LINE#         12
+  -------         ENDPROC       ENABLETIMERINTERRUPT
+  -------         ENDMOD        INTERRUPT
+
+  -------         MODULE        TIMER
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:0C64H         PUBLIC        Timer0_Start
+  C:0C67H         PUBLIC        Timer1_Start
+  C:0C46H         PUBLIC        _Timer0_Init
+  C:0C4EH         PUBLIC        _Timer1_Init
+  D:0089H         PUBLIC        TMOD
+  C:0C6AH         PUBLIC        Timer0_Stop
+  C:0C6DH         PUBLIC        Timer1_Stop
+  D:008CH         PUBLIC        TH0
+  D:008DH         PUBLIC        TH1
+  D:008AH         PUBLIC        TL0
+  D:008BH         PUBLIC        TL1
+  B:0088H.4       PUBLIC        TR0
+  B:0088H.6       PUBLIC        TR1
+  -------         PROC          _TIMER0_INIT
+  D:0007H         SYMBOL        TM
+  D:0005H         SYMBOL        TH
+  D:0003H         SYMBOL        TL
+  C:0C46H         LINE#         4
+  C:0C46H         LINE#         5
+  C:0C49H         LINE#         6
+  C:0C4BH         LINE#         7
+  C:0C4DH         LINE#         8
+  -------         ENDPROC       _TIMER0_INIT
+  -------         PROC          _TIMER1_INIT
+  D:0007H         SYMBOL        TM
+  D:0005H         SYMBOL        TH
+  D:0003H         SYMBOL        TL
+  C:0C4EH         LINE#         10
+  C:0C4EH         LINE#         11
+  C:0C51H         LINE#         12
+  C:0C53H         LINE#         13
+  C:0C55H         LINE#         14
+  -------         ENDPROC       _TIMER1_INIT
+  -------         PROC          TIMER0_START
+  C:0C64H         LINE#         16
+  C:0C64H         LINE#         17
+  C:0C66H         LINE#         18
+  -------         ENDPROC       TIMER0_START
+  -------         PROC          TIMER1_START
+  C:0C67H         LINE#         20
+  C:0C67H         LINE#         21
+  C:0C69H         LINE#         22
+  -------         ENDPROC       TIMER1_START
+  -------         PROC          TIMER0_STOP
+  C:0C6AH         LINE#         24
+BL51 BANKED LINKER/LOCATER V6.22.4.0                                                  03/05/2025  17:08:17  PAGE 9
+
+
+  C:0C6AH         LINE#         25
+  C:0C6CH         LINE#         26
+  -------         ENDPROC       TIMER0_STOP
+  -------         PROC          TIMER1_STOP
+  C:0C6DH         LINE#         28
+  C:0C6DH         LINE#         29
+  C:0C6FH         LINE#         30
+  -------         ENDPROC       TIMER1_STOP
+  -------         ENDMOD        TIMER
+
+  -------         MODULE        ?C?CLDPTR
+  C:0800H         PUBLIC        ?C?CLDPTR
+  -------         ENDMOD        ?C?CLDPTR
+
+  -------         MODULE        ?C?IMUL
+  C:0819H         PUBLIC        ?C?IMUL
+  -------         ENDMOD        ?C?IMUL
+
+  -------         MODULE        ?C?LMUL
+  C:082BH         PUBLIC        ?C?LMUL
+  -------         ENDMOD        ?C?LMUL
+
+  -------         MODULE        ?C?ULDIV
+  C:08B6H         PUBLIC        ?C?ULDIV
+  -------         ENDMOD        ?C?ULDIV
+
+  -------         MODULE        ?C?ULCMP
+  C:0948H         PUBLIC        ?C?ULCMP
+  -------         ENDMOD        ?C?ULCMP
+
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?COMMAND?KEYPAD
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 029CH BYTE (32%) *
+******************************************************************************
+
+Program Size: data=36.0 xdata=0 code=1142
+LINK/LOCATE RUN COMPLETE.  1 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,49 @@
+C51 COMPILER V9.60.7.0   LCD                                                               03/05/2025 17:08:17 PAGE 1   
+
+
+C51 COMPILER V9.60.7.0, COMPILATION OF MODULE LCD
+OBJECT MODULE PLACED IN .\Objects\LCD.obj
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE HAL\LCD.c OPTIMIZE(8,SPEED) BROWSE INCDIR(.\BLL;.\HAL;..\application lay
+                    -ers;.\Config) DEBUG OBJECTEXTEND PRINT(.\Listings\LCD.lst) TABS(2) OBJECT(.\Objects\LCD.obj)
+
+line level    source
+
+   1          
+   2          #include "LCD.h"
+   3          
+   4          
+   5          void command(unsigned char cmd)
+   6          {
+   7   1       RW = 0;
+   8   1       RS = 0;
+   9   1       LCD_PORT = cmd;
+  10   1       EN = 1;
+  11   1       delayUsingInstruction(20);
+  12   1       EN = 0;
+  13   1      }
+  14          
+  15          void write_data(unsigned char ch)
+  16          {
+  17   1        RW = 0;
+  18   1        RS = 1;
+  19   1        LCD_PORT = ch;
+  20   1        EN = 1;
+  21   1        delayUsingInstruction(20);
+  22   1        EN = 0;
+  23   1      }
+  24          
+  25          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     32    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)
