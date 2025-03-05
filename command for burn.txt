@@ -1,1 +1,0 @@
-"C:\Program Files (x86)\Arduino\hardware\tools\avr\bin\avrdude.exe" -C C:/AVR8051.conf -c stk500v1 -P COM3 -p 89s52 -b 19200 -U flash:w:"D:\Education\TASK\Embedded System\Frequency-Meter-8051\Keil\Objects\Project.hex":a
